@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приложение авто</title>
+</head>
+<body>
+
+<nav class="nav2">
+    <div class="nav-wrapper">
+        <a href="/" id="brandLogo">Приложение авто</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {{#if isHome}}
+            <li class="active"><a href="/" id="homeLink">Главная</a></li>
+            {{else}}
+            <li><a href="/" id="homeLink">Главная</a></li>
+            {{/if}}
+            
+            {{#if isAutos}}
+            <li class="active"><a href="/autos" id="autosLink">Авто</a></li>
+            {{else}}
+            <li><a href="/autos" id="autosLink">Авто</a></li>
+            {{/if}}
+
+            {{#if isAdd}}
+            <li class="active"><a href="/add" id="addLink">Добавить авто</a></li>
+            {{else}}
+            <li><a href="/add" id="addLink">Добавить авто</a></li>
+            {{/if}}
+            
+            <li><button id="toggleButton" onclick="toggleLanguage()">Сменить язык</button></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="content">
+    <h1 id="welcomeHeader">Добро пожаловать!</h1>
+    <p id="exampleText">Это пример контента на странице.</p>
+</div>
+
+<script>
+    let isRussian = true; // Переменная для хранения текущего языка (true - русский, false - английский)
+
+    // Функция для смены языка при нажатии на кнопку
+    function toggleLanguage() {
+        isRussian = !isRussian; // Инвертируем значение переменной
+        updateLanguage(); // Вызываем функцию для обновления текста на странице
+    }
+
+    // Функция для обновления текста на странице в соответствии с выбранным языком
+    function updateLanguage() {
+        const buttonText = document.getElementById('toggleButton');
+        if (isRussian) {
+            buttonText.textContent = 'Сменить язык'; // Если русский, текст на кнопке будет на русском
+            document.documentElement.lang = 'ru'; // Устанавливаем язык документа на русский
+            document.getElementById('brandLogo').textContent = 'Приложение авто'; // Обновляем текст логотипа на русский
+            document.getElementById('homeLink').textContent = 'Главная'; // Обновляем текст ссылки Главной на русский
+            document.getElementById('autosLink').textContent = 'Авто'; // Обновляем текст ссылки Авто на русский
+            document.getElementById('addLink').textContent = 'Добавить авто'; // Обновляем текст ссылки Добавить авто на русский
+            document.getElementById('favLink').textContent = 'Гараж'; // Обновляем текст ссылки Гараж на русский
+            document.getElementById('welcomeHeader').textContent = 'Добро пожаловать!'; // Обновляем заголовок приветствия на русский
+            document.getElementById('exampleText').textContent = 'Это пример контента на странице.';
+            document.getElementById('change').textContent = 'Редактировать Авто'; // Обновляем пример текста на русский
+            document.getElementById('Buy').textContent="Купить"
+        } else {
+            buttonText.textContent = 'Change language'; // Если английский, текст на кнопке будет на английском
+            document.documentElement.lang = 'en'; // Устанавливаем язык документа на английский
+            document.getElementById('brandLogo').textContent = 'Auto App'; // Обновляем текст логотипа на английский
+            document.getElementById('homeLink').textContent = 'Home'; // Обновляем текст ссылки Главной на английский
+            document.getElementById('autosLink').textContent = 'Autos'; // Обновляем текст ссылки Авто на английский
+            document.getElementById('addLink').textContent = 'Add Auto'; // Обновляем текст ссылки Добавить авто на английский
+            document.getElementById('favLink').textContent = 'Garage'; // Обновляем текст ссылки Гараж на английский
+            document.getElementById('welcomeHeader').textContent = 'Welcome!'; // Обновляем заголовок приветствия на английский
+            document.getElementById('exampleText').textContent = 'This is an example content on the page.';
+            document.getElementById('change').textContent = 'Change Auto'; // Обновляем пример текста на английский
+            document.getElementById('Buy').textContent="Buy Auto"
+        }
+    }
+
+    // Вызываем функцию для установки изначального состояния текста и языка на странице
+    updateLanguage();
+</script>
+
+</body>
+</html>
