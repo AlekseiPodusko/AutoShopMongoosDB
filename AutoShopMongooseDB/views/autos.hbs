@@ -1,0 +1,29 @@
+<h1>Авто</h1>
+
+{{#if autos.length}}
+{{#each autos}}
+<div class="row">
+    <div class="col s6 offset-s3">
+        <div class="fav">
+            <div class="fav-image">
+                <img scr="{{img}}" alt="{{title}}">
+            </div>
+            <div class="fav-content">
+                <span class="fav-title">{{title}}</span>
+                <p class="price">{{price}}</p>
+            </div>
+            <div class="fav-action actions">
+                <a href="/autos/{{id}}" target="_blank">Открытяый авто</a>
+                <a href="/autos/{{id}}/edit?allow=true">Редактировать</a>
+                <form action="/fav/add" method="POST">
+                <input type="hidden" name="id" value="{{id}}">
+                <button type="submit" class="btn btn-primaty">Купить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+{{else}}
+<p>Авто пока нет</p>
+{{/if}}
